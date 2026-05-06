@@ -4,96 +4,94 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Nasdaq
 providerId: nasdaq-omx-group
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Financial Services
-  - Capital Markets
-  - Stock Exchange
-  - Market Data
-  - Economics
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Nasdaq API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  - Financial Data
+  - Capital Markets
+  - Market Data
+description: Nasdaq Data Link enforces tier-based rate limits keyed on the API key (or source IP, when
+  unauthenticated) across the Time-series, Tables, and Bulk Download APIs. Anonymous traffic is heavily
+  throttled; signed-up free keys raise limits significantly; premium subscribers receive the highest
+  ceiling. There is also a concurrency limit on the free tier and per-table caps on the Bulk Download
+  API.
+sources:
+  - https://docs.data.nasdaq.com/docs/rate-limits-1
+  - https://docs.data.nasdaq.com/docs/in-depth-usage
+  - https://help.data.nasdaq.com/article/464-what-is-included-with-my-premium-data-subscription
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
+  - name: Anonymous (no API key) — 10 min
+    scope: IP
+    metric: requests_per_10_minutes
+    limit: 20
     timeFrame: minute
-    applies:
-      - Nasdaq Data Link Time-series API
-      - Nasdaq Data Link Tables API
-      - Nasdaq Data Link Streaming API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Nasdaq Data Link Time-series API
-      - Nasdaq Data Link Tables API
-      - Nasdaq Data Link Streaming API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
+  - name: Anonymous (no API key) — daily
+    scope: IP
+    metric: requests_per_day
+    limit: 50
+    timeFrame: day
+  - name: Free authenticated — 10 sec
+    scope: key
+    metric: requests_per_10_seconds
+    limit: 300
+    timeFrame: second
+  - name: Free authenticated — 10 min
+    scope: key
+    metric: requests_per_10_minutes
+    limit: 2000
     timeFrame: minute
-    applies:
-      - Nasdaq Data Link Time-series API
-      - Nasdaq Data Link Tables API
-      - Nasdaq Data Link Streaming API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Nasdaq Data Link Time-series API
-      - Nasdaq Data Link Tables API
-      - Nasdaq Data Link Streaming API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
+  - name: Free authenticated — daily
+    scope: key
+    metric: requests_per_day
+    limit: 50000
+    timeFrame: day
+  - name: Free authenticated concurrency
+    scope: key
+    metric: concurrent_requests
+    limit: 1
+    notes: One in-flight call plus one queued call per free key.
+  - name: Premium subscriber — 10 min
+    scope: key
+    metric: requests_per_10_minutes
+    limit: 5000
     timeFrame: minute
-    applies:
-      - Nasdaq Data Link Time-series API
-      - Nasdaq Data Link Tables API
-      - Nasdaq Data Link Streaming API
+  - name: Premium subscriber — daily
+    scope: key
+    metric: requests_per_day
+    limit: 720000
+    timeFrame: day
+  - name: Premium bulk export
+    scope: key
+    metric: exports_per_hour
+    limit: 60
+    timeFrame: hour
+    notes: qopts.export=true bulk exports.
+  - name: Bulk Download — existing subscriber
+    scope: key/table
+    metric: requests_per_day
+    limit: 30
+    timeFrame: day
+  - name: Bulk Download — new subscriber (initial)
+    scope: key/table
+    metric: requests_per_day
+    limit: 25
+    timeFrame: day
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Authenticate to raise limits
+    description: Append your api_key query parameter (or use the SDK) to move from anonymous-IP throttling
+      to per-key limits.
+  - name: Subscribe for premium
+    description: A premium-dataset subscription on the same API key automatically lifts the key into the
+      premium rate ceiling.
+  - name: Concurrency on free tier
+    description: Free authenticated keys are limited to one concurrent call plus one queued call; design
+      consumers to serialize requests.
+  - name: Reset signaling
+    description: Rate-limit reset times are returned in response headers; respect them rather than tight-looping
+      after a 429.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
