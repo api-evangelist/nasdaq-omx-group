@@ -39,6 +39,8 @@ apis:
         url: https://docs.data.nasdaq.com/docs
       - type: SignUp
         url: https://data.nasdaq.com/sign-up
+      - type: OpenAPI
+        url: openapi/nasdaq-omx-group-openapi.yml
   - aid: nasdaq-omx-group:data-link-tables
     name: Nasdaq Data Link Tables API
     description: >-

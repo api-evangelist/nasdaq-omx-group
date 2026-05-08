@@ -1,0 +1,215 @@
+openapi: 3.1.0
+info:
+  title: Nasdaq Data Link API
+  description: >-
+    Nasdaq Data Link REST API for retrieving time-series financial and
+    economic data, dataset metadata, and database information. Access is
+    controlled via API key passed as the `api_key` query parameter, and
+    responses are available in JSON, XML, and CSV.
+  version: 1.0.0
+  contact:
+    name: Nasdaq Data Link
+    url: https://data.nasdaq.com/
+  x-generated-from: https://docs.data.nasdaq.com/docs/in-depth-usage
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+  - url: https://data.nasdaq.com/api/v3
+    description: Nasdaq Data Link production API
+security:
+  - apiKeyAuth: []
+tags:
+  - name: Datasets
+    description: Time-series datasets and their metadata.
+  - name: Databases
+    description: Databases that group related datasets.
+paths:
+  /datasets/{database_code}/{dataset_code}/data.{format}:
+    get:
+      tags: [Datasets]
+      operationId: getDatasetData
+      summary: Retrieve time-series data for a dataset
+      parameters:
+        - $ref: '#/components/parameters/DatabaseCode'
+        - $ref: '#/components/parameters/DatasetCode'
+        - $ref: '#/components/parameters/Format'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/ColumnIndex'
+        - $ref: '#/components/parameters/StartDate'
+        - $ref: '#/components/parameters/EndDate'
+        - $ref: '#/components/parameters/Order'
+        - $ref: '#/components/parameters/Collapse'
+        - $ref: '#/components/parameters/Transform'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+  /datasets/{database_code}/{dataset_code}/metadata.{format}:
+    get:
+      tags: [Datasets]
+      operationId: getDatasetMetadata
+      summary: Retrieve metadata for a dataset
+      parameters:
+        - $ref: '#/components/parameters/DatabaseCode'
+        - $ref: '#/components/parameters/DatasetCode'
+        - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /datasets/{database_code}/{dataset_code}.{format}:
+    get:
+      tags: [Datasets]
+      operationId: getDatasetDataAndMetadata
+      summary: Retrieve combined data and metadata for a dataset
+      parameters:
+        - $ref: '#/components/parameters/DatabaseCode'
+        - $ref: '#/components/parameters/DatasetCode'
+        - $ref: '#/components/parameters/Format'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/StartDate'
+        - $ref: '#/components/parameters/EndDate'
+        - $ref: '#/components/parameters/Collapse'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /databases/{database_code}.{format}:
+    get:
+      tags: [Databases]
+      operationId: getDatabaseMetadata
+      summary: Retrieve metadata for a database
+      parameters:
+        - $ref: '#/components/parameters/DatabaseCode'
+        - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /databases/{database_code}/data:
+    get:
+      tags: [Databases]
+      operationId: downloadDatabaseData
+      summary: Download all (or partial) data for a premium database
+      parameters:
+        - $ref: '#/components/parameters/DatabaseCode'
+        - name: download_type
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [full, partial]
+          description: Download the full database or only the latest observations.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Pass your Nasdaq Data Link API key as the `api_key` query parameter.
+  parameters:
+    DatabaseCode:
+      name: database_code
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Short code identifying the database (e.g. WIKI, FRED).
+    DatasetCode:
+      name: dataset_code
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Short code identifying the dataset within a database.
+    Format:
+      name: format
+      in: path
+      required: true
+      schema:
+        type: string
+        enum: [json, xml, csv]
+      description: Response format.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+      description: Limit the number of returned rows.
+    ColumnIndex:
+      name: column_index
+      in: query
+      required: false
+      schema:
+        type: integer
+      description: Request a single specified column (0 = date).
+    StartDate:
+      name: start_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date
+      description: Inclusive lower bound for the date filter (yyyy-mm-dd).
+    EndDate:
+      name: end_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date
+      description: Inclusive upper bound for the date filter (yyyy-mm-dd).
+    Order:
+      name: order
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [asc, desc]
+      description: Sort order of returned rows.
+    Collapse:
+      name: collapse
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [daily, weekly, monthly, quarterly, annual]
+      description: Sampling frequency to collapse the time series to.
+    Transform:
+      name: transform
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [diff, rdiff, rdiff_from, cumul, normalize]
+      description: Transformation to apply to the data series.
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true
