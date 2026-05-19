@@ -1,0 +1,136 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Nasdaq Data Link API — Datasets
+  description: 'Nasdaq Data Link API — Datasets. 3 operations. Lead operation: Retrieve combined data and metadata for a dataset.
+    Self-contained Naftiko capability covering one Nasdaq Omx Group business surface.'
+  tags:
+  - Nasdaq Omx Group
+  - Datasets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NASDAQ_OMX_GROUP_API_KEY: NASDAQ_OMX_GROUP_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nasdaq-omx-group-datasets
+    baseUri: https://data.nasdaq.com/api/v3
+    description: Nasdaq Data Link API — Datasets business capability. Self-contained, no shared references.
+    resources:
+    - name: datasets-database_code-dataset_code}.{format
+      path: /datasets/{database_code}/{dataset_code}.{format}
+      operations:
+      - name: getdatasetdataandmetadata
+        method: GET
+        description: Retrieve combined data and metadata for a dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: datasets-database_code-dataset_code-data.{format}
+      path: /datasets/{database_code}/{dataset_code}/data.{format}
+      operations:
+      - name: getdatasetdata
+        method: GET
+        description: Retrieve time-series data for a dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: datasets-database_code-dataset_code-metadata.{format}
+      path: /datasets/{database_code}/{dataset_code}/metadata.{format}
+      operations:
+      - name: getdatasetmetadata
+        method: GET
+        description: Retrieve metadata for a dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: api_key
+      value: '{{env.NASDAQ_OMX_GROUP_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: nasdaq-omx-group-datasets-rest
+    port: 8080
+    description: REST adapter for Nasdaq Data Link API — Datasets. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/datasets/{database-code}/{dataset-code-format}
+      name: datasets-database-code-dataset-code-format
+      description: REST surface for datasets-database_code-dataset_code}.{format.
+      operations:
+      - method: GET
+        name: getdatasetdataandmetadata
+        description: Retrieve combined data and metadata for a dataset
+        call: nasdaq-omx-group-datasets.getdatasetdataandmetadata
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{database-code}/{dataset-code}/data-format
+      name: datasets-database-code-dataset-code-data-format
+      description: REST surface for datasets-database_code-dataset_code-data.{format}.
+      operations:
+      - method: GET
+        name: getdatasetdata
+        description: Retrieve time-series data for a dataset
+        call: nasdaq-omx-group-datasets.getdatasetdata
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{database-code}/{dataset-code}/metadata-format
+      name: datasets-database-code-dataset-code-metadata-format
+      description: REST surface for datasets-database_code-dataset_code-metadata.{format}.
+      operations:
+      - method: GET
+        name: getdatasetmetadata
+        description: Retrieve metadata for a dataset
+        call: nasdaq-omx-group-datasets.getdatasetmetadata
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nasdaq-omx-group-datasets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Nasdaq Data Link API — Datasets. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: retrieve-combined-data-and-metadata
+      description: Retrieve combined data and metadata for a dataset
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nasdaq-omx-group-datasets.getdatasetdataandmetadata
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-time-series-data-dataset
+      description: Retrieve time-series data for a dataset
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nasdaq-omx-group-datasets.getdatasetdata
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-metadata-dataset
+      description: Retrieve metadata for a dataset
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nasdaq-omx-group-datasets.getdatasetmetadata
+      outputParameters:
+      - type: object
+        mapping: $.
