@@ -79,6 +79,8 @@ common:
   url: https://data.nasdaq.com/
 - type: Documentation
   url: https://docs.data.nasdaq.com/
+- type: LLMsTxt
+  url: https://docs.data.nasdaq.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
