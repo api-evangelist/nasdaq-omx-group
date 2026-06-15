@@ -1,0 +1,243 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nasdaq Data Link API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve time-series data for a dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/datasets/:database_code/:dataset_code/data.:format",
+            "params": [
+              {
+                "name": "database_code",
+                "value": "",
+                "type": "path",
+                "description": "Short code identifying the database (e.g. WIKI, FRED)."
+              },
+              {
+                "name": "dataset_code",
+                "value": "",
+                "type": "path",
+                "description": "Short code identifying the dataset within a database."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Response format."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of returned rows."
+              },
+              {
+                "name": "column_index",
+                "value": "",
+                "type": "query",
+                "description": "Request a single specified column (0 = date)."
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Inclusive lower bound for the date filter (yyyy-mm-dd)."
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "Inclusive upper bound for the date filter (yyyy-mm-dd)."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order of returned rows."
+              },
+              {
+                "name": "collapse",
+                "value": "",
+                "type": "query",
+                "description": "Sampling frequency to collapse the time series to."
+              },
+              {
+                "name": "transform",
+                "value": "",
+                "type": "query",
+                "description": "Transformation to apply to the data series."
+              }
+            ]
+          },
+          "docs": "Retrieve time-series data for a dataset"
+        },
+        {
+          "info": {
+            "name": "Retrieve metadata for a dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/datasets/:database_code/:dataset_code/metadata.:format",
+            "params": [
+              {
+                "name": "database_code",
+                "value": "",
+                "type": "path",
+                "description": "Short code identifying the database (e.g. WIKI, FRED)."
+              },
+              {
+                "name": "dataset_code",
+                "value": "",
+                "type": "path",
+                "description": "Short code identifying the dataset within a database."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Response format."
+              }
+            ]
+          },
+          "docs": "Retrieve metadata for a dataset"
+        },
+        {
+          "info": {
+            "name": "Retrieve combined data and metadata for a dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/datasets/:database_code/:dataset_code.:format",
+            "params": [
+              {
+                "name": "database_code",
+                "value": "",
+                "type": "path",
+                "description": "Short code identifying the database (e.g. WIKI, FRED)."
+              },
+              {
+                "name": "dataset_code",
+                "value": "",
+                "type": "path",
+                "description": "Short code identifying the dataset within a database."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Response format."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of returned rows."
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Inclusive lower bound for the date filter (yyyy-mm-dd)."
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "Inclusive upper bound for the date filter (yyyy-mm-dd)."
+              },
+              {
+                "name": "collapse",
+                "value": "",
+                "type": "query",
+                "description": "Sampling frequency to collapse the time series to."
+              }
+            ]
+          },
+          "docs": "Retrieve combined data and metadata for a dataset"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Databases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve metadata for a database",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/databases/:database_code.:format",
+            "params": [
+              {
+                "name": "database_code",
+                "value": "",
+                "type": "path",
+                "description": "Short code identifying the database (e.g. WIKI, FRED)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Response format."
+              }
+            ]
+          },
+          "docs": "Retrieve metadata for a database"
+        },
+        {
+          "info": {
+            "name": "Download all (or partial) data for a premium database",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/databases/:database_code/data",
+            "params": [
+              {
+                "name": "database_code",
+                "value": "",
+                "type": "path",
+                "description": "Short code identifying the database (e.g. WIKI, FRED)."
+              },
+              {
+                "name": "download_type",
+                "value": "",
+                "type": "query",
+                "description": "Download the full database or only the latest observations."
+              }
+            ]
+          },
+          "docs": "Download all (or partial) data for a premium database"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
