@@ -5,7 +5,7 @@ description: >-
   exchange technology, listing, information, and public company services. Nasdaq Data Link offers REST APIs for
   accessing financial, economic, and alternative data.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://data.nasdaq.com/
 created: '2024-01-01'
 modified: '2026-05-19'
@@ -23,7 +23,7 @@ apis:
     description: >-
       REST API for retrieving time-series financial data including dataset values, metadata, and combined data and
       metadata responses across thousands of databases of historical financial and economic data.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.data.nasdaq.com/docs/in-depth-usage
     baseURL: https://data.nasdaq.com/api/v3
     tags:
