@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/nasdaq-omx-group-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: Pass your Nasdaq Data Link API key as the `api_key` query parameter.
+  sources:
+  - openapi/nasdaq-omx-group-openapi.yml

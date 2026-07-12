@@ -71,6 +71,10 @@ apis:
       - type: Signup
         url: https://data.nasdaq.com/sign-up
 common:
+  - type: DomainSecurity
+    url: security/nasdaq-omx-group-domain-security.yml
+  - type: Authentication
+    url: authentication/nasdaq-omx-group-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/nasdaq
   - type: Website
