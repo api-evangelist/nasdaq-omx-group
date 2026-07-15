@@ -71,6 +71,8 @@ apis:
       - type: Signup
         url: https://data.nasdaq.com/sign-up
 common:
+  - type: AgenticAccess
+    url: agentic-access/nasdaq-omx-group-agentic-access.yml
   - type: DomainSecurity
     url: security/nasdaq-omx-group-domain-security.yml
   - type: Authentication
