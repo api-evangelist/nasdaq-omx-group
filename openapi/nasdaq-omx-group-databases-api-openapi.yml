@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Nasdaq Data Link Databases API
+  description: Nasdaq Data Link REST API for retrieving time-series financial and economic data, dataset metadata, and database information. Access is controlled via API key passed as the `api_key` query parameter, and responses are available in JSON, XML, and CSV.
+  version: 1.0.0
+  contact:
+    name: Nasdaq Data Link
+    url: https://data.nasdaq.com/
+  x-generated-from: https://docs.data.nasdaq.com/docs/in-depth-usage
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://data.nasdaq.com/api/v3
+  description: Nasdaq Data Link production API
+security:
+- apiKeyAuth: []
+tags:
+- name: Databases
+  description: Databases that group related datasets.
+paths:
+  /databases/{database_code}.{format}:
+    get:
+      tags:
+      - Databases
+      operationId: getDatabaseMetadata
+      summary: Retrieve metadata for a database
+      parameters:
+      - $ref: '#/components/parameters/DatabaseCode'
+      - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /databases/{database_code}/data:
+    get:
+      tags:
+      - Databases
+      operationId: downloadDatabaseData
+      summary: Download all (or partial) data for a premium database
+      parameters:
+      - $ref: '#/components/parameters/DatabaseCode'
+      - name: download_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - full
+          - partial
+        description: Download the full database or only the latest observations.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+components:
+  parameters:
+    DatabaseCode:
+      name: database_code
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Short code identifying the database (e.g. WIKI, FRED).
+    Format:
+      name: format
+      in: path
+      required: true
+      schema:
+        type: string
+        enum:
+        - json
+        - xml
+        - csv
+      description: Response format.
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Pass your Nasdaq Data Link API key as the `api_key` query parameter.
