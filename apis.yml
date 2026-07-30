@@ -5,7 +5,20 @@ description: >-
   exchange technology, listing, information, and public company services. Nasdaq Data Link offers REST APIs for
   accessing financial, economic, and alternative data.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nasdaq-omx-group.png
 url: https://data.nasdaq.com/
 created: '2024-01-01'
 modified: '2026-05-19'
@@ -18,58 +31,69 @@ tags:
   - Economics
   - Fortune 1000
 apis:
-  - aid: nasdaq-omx-group:data-link-time-series
-    name: Nasdaq Data Link Time-series API
-    description: >-
-      REST API for retrieving time-series financial data including dataset values, metadata, and combined data and
-      metadata responses across thousands of databases of historical financial and economic data.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.data.nasdaq.com/docs/in-depth-usage
-    baseURL: https://data.nasdaq.com/api/v3
-    tags:
-      - Time Series
-      - Financial Data
-      - Market Data
-      - Datasets
-    properties:
-      - type: Documentation
-        url: https://docs.data.nasdaq.com/docs/in-depth-usage
-      - type: GettingStarted
-        url: https://docs.data.nasdaq.com/docs
-      - type: Signup
-        url: https://data.nasdaq.com/sign-up
-      - type: OpenAPI
-        url: openapi/nasdaq-omx-group-openapi.yml
-  - aid: nasdaq-omx-group:data-link-tables
-    name: Nasdaq Data Link Tables API
-    description: >-
-      REST API for retrieving Tables-style datasets, supporting filtering by column, query parameters, and large result
-      sets via pagination or bulk download.
-    humanURL: https://docs.data.nasdaq.com/docs/tables-1
-    baseURL: https://data.nasdaq.com/api/v3
-    tags:
-      - Tables
-      - Financial Data
-      - Datasets
-    properties:
-      - type: Documentation
-        url: https://docs.data.nasdaq.com/docs/tables-1
-      - type: Signup
-        url: https://data.nasdaq.com/sign-up
-  - aid: nasdaq-omx-group:data-link-streaming
-    name: Nasdaq Data Link Streaming API
-    description: Streaming API providing real-time delivery of market data through persistent connections.
-    humanURL: https://docs.data.nasdaq.com/docs
-    baseURL: https://data.nasdaq.com/api/v3
-    tags:
-      - Streaming
-      - Real Time
-      - Market Data
-    properties:
-      - type: Documentation
-        url: https://docs.data.nasdaq.com/docs
-      - type: Signup
-        url: https://data.nasdaq.com/sign-up
+- aid: nasdaq-omx-group:data-link-tables
+  name: Nasdaq Data Link Tables API
+  description: >-
+    REST API for retrieving Tables-style datasets, supporting filtering by column, query parameters, and
+    large result sets via pagination or bulk download.
+  humanURL: https://docs.data.nasdaq.com/docs/tables-1
+  baseURL: https://data.nasdaq.com/api/v3
+  tags:
+  - Tables
+  - Financial Data
+  - Datasets
+  properties:
+  - type: Documentation
+    url: https://docs.data.nasdaq.com/docs/tables-1
+  - type: Signup
+    url: https://data.nasdaq.com/sign-up
+- aid: nasdaq-omx-group:data-link-streaming
+  name: Nasdaq Data Link Streaming API
+  description: >-
+    Streaming API providing real-time delivery of market data through persistent connections.
+  humanURL: https://docs.data.nasdaq.com/docs
+  baseURL: https://data.nasdaq.com/api/v3
+  tags:
+  - Streaming
+  - Real Time
+  - Market Data
+  properties:
+  - type: Documentation
+    url: https://docs.data.nasdaq.com/docs
+  - type: Signup
+    url: https://data.nasdaq.com/sign-up
+- aid: nasdaq-omx-group:nasdaq-omx-group-databases-api
+  name: Nasdaq Databases API
+  description: Databases that group related datasets.
+  humanURL: https://docs.data.nasdaq.com/docs/in-depth-usage
+  baseURL: https://data.nasdaq.com/api/v3
+  tags:
+  - Databases
+  properties:
+  - type: OpenAPI
+    url: openapi/nasdaq-omx-group-databases-api-openapi.yml
+  - type: Documentation
+    url: https://docs.data.nasdaq.com/docs/in-depth-usage
+  - type: GettingStarted
+    url: https://docs.data.nasdaq.com/docs
+  - type: Signup
+    url: https://data.nasdaq.com/sign-up
+- aid: nasdaq-omx-group:nasdaq-omx-group-datasets-api
+  name: Nasdaq Datasets API
+  description: Time-series datasets and their metadata.
+  humanURL: https://docs.data.nasdaq.com/docs/in-depth-usage
+  baseURL: https://data.nasdaq.com/api/v3
+  tags:
+  - Datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/nasdaq-omx-group-datasets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.data.nasdaq.com/docs/in-depth-usage
+  - type: GettingStarted
+    url: https://docs.data.nasdaq.com/docs
+  - type: Signup
+    url: https://data.nasdaq.com/sign-up
 common:
   - type: AgenticAccess
     url: agentic-access/nasdaq-omx-group-agentic-access.yml
