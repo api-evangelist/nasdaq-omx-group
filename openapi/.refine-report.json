@@ -1,0 +1,16 @@
+{
+  "provider": "nasdaq-omx-group",
+  "sources": [
+    "nasdaq-omx-group-databases-api-openapi.yml",
+    "nasdaq-omx-group-datasets-api-openapi.yml"
+  ],
+  "outputs": [
+    "nasdaq-omx-group-databases-api-openapi.yml",
+    "nasdaq-omx-group-datasets-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
