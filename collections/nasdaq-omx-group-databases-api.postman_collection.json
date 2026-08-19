@@ -1,0 +1,246 @@
+{
+  "item": [
+    {
+      "id": "36d76e7a-d8c1-4693-9c27-a2ab4fc36752",
+      "name": "Databases",
+      "description": {
+        "content": "Databases that group related datasets.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "65eccbfa-e7bc-4fcf-af5f-3679215f5e55",
+          "name": "Retrieve metadata for a database",
+          "request": {
+            "name": "Retrieve metadata for a database",
+            "description": {},
+            "url": {
+              "path": [
+                "databases",
+                "{{database_code}}.{{format}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0dc2ee0f-4ba5-4e96-a57f-2ff4c8b6331c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    "{{database_code}}.{{format}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 6670\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd7dfbba-3b71-422f-af40-07db787b8e90",
+          "name": "Download all (or partial) data for a premium database",
+          "request": {
+            "name": "Download all (or partial) data for a premium database",
+            "description": {},
+            "url": {
+              "path": [
+                "databases",
+                ":database_code",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "download_type",
+                  "value": "<string>",
+                  "description": "Download the full database or only the latest observations."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "database_code",
+                  "description": "(Required) Short code identifying the database (e.g. WIKI, FRED)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/zip"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33dc43df-570c-4879-a8ff-dc914acb78f6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":database_code",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "download_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database_code",
+                      "description": "(Required) Short code identifying the database (e.g. WIKI, FRED)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/zip"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/zip"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.nasdaq.com/api/v3",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Short code identifying the database (e.g. WIKI, FRED).",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "database_code"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Response format.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "format"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8c68cf65-5121-4439-bb4f-07068197c7bc",
+    "name": "Nasdaq Data Link Databases API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Nasdaq Data Link REST API for retrieving time-series financial and economic data, dataset metadata, and database information. Access is controlled via API key passed as the `api_key` query parameter, and responses are available in JSON, XML, and CSV.\n\nContact Support:\n Name: Nasdaq Data Link",
+      "type": "text/plain"
+    }
+  }
+}

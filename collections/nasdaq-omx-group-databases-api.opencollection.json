@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nasdaq Data Link Databases API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Databases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve metadata for a database",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/databases/:database_code.:format",
+            "params": [
+              {
+                "name": "database_code",
+                "value": "",
+                "type": "path",
+                "description": "Short code identifying the database (e.g. WIKI, FRED)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Response format."
+              }
+            ]
+          },
+          "docs": "Retrieve metadata for a database"
+        },
+        {
+          "info": {
+            "name": "Download all (or partial) data for a premium database",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/databases/:database_code/data",
+            "params": [
+              {
+                "name": "database_code",
+                "value": "",
+                "type": "path",
+                "description": "Short code identifying the database (e.g. WIKI, FRED)."
+              },
+              {
+                "name": "download_type",
+                "value": "",
+                "type": "query",
+                "description": "Download the full database or only the latest observations."
+              }
+            ]
+          },
+          "docs": "Download all (or partial) data for a premium database"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

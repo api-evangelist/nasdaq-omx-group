@@ -1,0 +1,28 @@
+# Nasdaq Data Link Documentation Documentation
+
+> Documentation for Nasdaq Data Link Documentation
+
+## Guides
+- [GETTING STARTED](https://docs.data.nasdaq.com/docs/getting-started.md): How to get started with Nasdaq Data Link's APIs.
+- [DATA ORGANIZATION, ACCESS OPTIONS AND AUTHENTICATION](https://docs.data.nasdaq.com/docs/data-organization.md)
+- [STREAMING API](https://docs.data.nasdaq.com/docs/streaming-api-1.md)
+- [API AND ANALYSIS TOOLS FOR TABLES DATA](https://docs.data.nasdaq.com/docs/api-and-analysis-tools-for-tables-data.md)
+- [RATE LIMITS FOR REAL-TIME/DELAYED REST API](https://docs.data.nasdaq.com/docs/rate-limits-for-real-timedelayed-rest-api.md)
+- [TABLES](https://docs.data.nasdaq.com/docs/tables-1.md)
+- [USAGE](https://docs.data.nasdaq.com/docs/in-depth-usage-1.md)
+- [LARGE TABLE DOWNLOAD](https://docs.data.nasdaq.com/docs/large-table-download.md)
+- [RATE LIMITS](https://docs.data.nasdaq.com/docs/rate-limits-1.md)
+- [EXCEL](https://docs.data.nasdaq.com/docs/excel-add-in.md): Download data using the Nasdaq Data Link Excel add-in
+- [INSTALLATION & AUTHENTICATION](https://docs.data.nasdaq.com/docs/excel-installation.md)
+- [USER GUIDE FOR NASDAQ DATA LINK PRO (WINDOWS)](https://docs.data.nasdaq.com/docs/excel-tables.md)
+- [USER GUIDE FOR NASDAQ DATA LINK (WEB)](https://docs.data.nasdaq.com/docs/user-guide-copy.md): Our popular Nasdaq Data Link Excel Add-in is now available to all users. Mac users can easily extract their subscribed datasets to Excel using the NASDAQ.TABLE formula in just a few minutes.
+- [PYTHON](https://docs.data.nasdaq.com/docs/python.md): Get millions of financial and economic datasets from hundreds of publishers directly into Python.
+- [INSTALLATION & AUTHENTICATION](https://docs.data.nasdaq.com/docs/python-installation.md)
+- [TABLES](https://docs.data.nasdaq.com/docs/python-tables.md)
+- [PYTHON CLI](https://docs.data.nasdaq.com/docs/python-cli.md)
+- [R](https://docs.data.nasdaq.com/docs/r.md): Get millions of financial and economic datasets from hundreds of publishers directly into R.
+- [INSTALLATION & AUTHENTICATION](https://docs.data.nasdaq.com/docs/r-installation.md)
+- [TABLES](https://docs.data.nasdaq.com/docs/r-tables.md)
+- [SQL CLIENTS & USAGE](https://docs.data.nasdaq.com/docs/sql-clients.md)
+- [FIREWALL - API FOR TABLES](https://docs.data.nasdaq.com/docs/firewall-errors.md): Your enterprise's firewall may block Nasdaq Data Link API calls for tables data. As a workaround, consider having your IT department add Nasdaq Data Link to a whitelist or create a proxy server.
+- [ERROR CODES - API FOR TABLES DATA](https://docs.data.nasdaq.com/docs/error-codes.md)

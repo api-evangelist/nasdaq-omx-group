@@ -1,0 +1,489 @@
+{
+  "item": [
+    {
+      "id": "bd5fa76c-71fe-4b83-a54a-e4f52dc2e8b2",
+      "name": "Datasets",
+      "description": {
+        "content": "Time-series datasets and their metadata.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "49b65fff-aa3d-4b13-bf9e-57c27bd0d734",
+          "name": "Retrieve time-series data for a dataset",
+          "request": {
+            "name": "Retrieve time-series data for a dataset",
+            "description": {},
+            "url": {
+              "path": [
+                "datasets",
+                ":database_code",
+                ":dataset_code",
+                "data.{{format}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Limit the number of returned rows."
+                },
+                {
+                  "disabled": false,
+                  "key": "column_index",
+                  "value": "<integer>",
+                  "description": "Request a single specified column (0 = date)."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Inclusive lower bound for the date filter (yyyy-mm-dd)."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "Inclusive upper bound for the date filter (yyyy-mm-dd)."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "Sort order of returned rows."
+                },
+                {
+                  "disabled": false,
+                  "key": "collapse",
+                  "value": "<string>",
+                  "description": "Sampling frequency to collapse the time series to."
+                },
+                {
+                  "disabled": false,
+                  "key": "transform",
+                  "value": "<string>",
+                  "description": "Transformation to apply to the data series."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "database_code",
+                  "description": "(Required) Short code identifying the database (e.g. WIKI, FRED)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataset_code",
+                  "description": "(Required) Short code identifying the dataset within a database."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "527c4474-02b3-409b-afa9-86a460b3c79f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":database_code",
+                    ":dataset_code",
+                    "data.{{format}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "column_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "collapse",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "transform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database_code",
+                      "description": "(Required) Short code identifying the database (e.g. WIKI, FRED)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataset_code",
+                      "description": "(Required) Short code identifying the dataset within a database."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 7535,\n  \"key_1\": 9829.72117668903,\n  \"key_2\": 5682.80620060022\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95851550-7b07-4d7c-826e-4ae7697c848f",
+          "name": "Retrieve metadata for a dataset",
+          "request": {
+            "name": "Retrieve metadata for a dataset",
+            "description": {},
+            "url": {
+              "path": [
+                "datasets",
+                ":database_code",
+                ":dataset_code",
+                "metadata.{{format}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "database_code",
+                  "description": "(Required) Short code identifying the database (e.g. WIKI, FRED)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataset_code",
+                  "description": "(Required) Short code identifying the dataset within a database."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25ca3793-a59e-4337-8c90-e1a0621b9628",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":database_code",
+                    ":dataset_code",
+                    "metadata.{{format}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database_code",
+                      "description": "(Required) Short code identifying the database (e.g. WIKI, FRED)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataset_code",
+                      "description": "(Required) Short code identifying the dataset within a database."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 7535,\n  \"key_1\": 9829.72117668903,\n  \"key_2\": 5682.80620060022\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "852d01d4-ce4e-4aa5-ae9f-9703158410a5",
+          "name": "Retrieve combined data and metadata for a dataset",
+          "request": {
+            "name": "Retrieve combined data and metadata for a dataset",
+            "description": {},
+            "url": {
+              "path": [
+                "datasets",
+                ":database_code",
+                "{{dataset_code}}.{{format}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Limit the number of returned rows."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Inclusive lower bound for the date filter (yyyy-mm-dd)."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "Inclusive upper bound for the date filter (yyyy-mm-dd)."
+                },
+                {
+                  "disabled": false,
+                  "key": "collapse",
+                  "value": "<string>",
+                  "description": "Sampling frequency to collapse the time series to."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "database_code",
+                  "description": "(Required) Short code identifying the database (e.g. WIKI, FRED)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09ce0ed6-a218-4d8c-b4c0-fbb5100dedd0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":database_code",
+                    "{{dataset_code}}.{{format}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "collapse",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "database_code",
+                      "description": "(Required) Short code identifying the database (e.g. WIKI, FRED)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 7535,\n  \"key_1\": 9829.72117668903,\n  \"key_2\": 5682.80620060022\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.nasdaq.com/api/v3",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Response format.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "format"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Short code identifying the dataset within a database.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "dataset_code"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "50e5735d-c641-4223-a507-9ffc5ddf41b8",
+    "name": "Nasdaq Data Link Databases Datasets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Nasdaq Data Link REST API for retrieving time-series financial and economic data, dataset metadata, and database information. Access is controlled via API key passed as the `api_key` query parameter, and responses are available in JSON, XML, and CSV.\n\nContact Support:\n Name: Nasdaq Data Link",
+      "type": "text/plain"
+    }
+  }
+}
