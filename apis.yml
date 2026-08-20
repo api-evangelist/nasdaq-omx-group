@@ -24,6 +24,13 @@ created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.23'
 tags:
+  - Financial-Services
+  - Capital Markets
+  - Stock Exchange
+  - Market Data
+  - Economics
+  - Fortune 1000
+tags_raw:
   - Financial Services
   - Capital Markets
   - Stock Exchange
@@ -54,6 +61,10 @@ apis:
   humanURL: https://docs.data.nasdaq.com/docs
   baseURL: https://data.nasdaq.com/api/v3
   tags:
+  - Streaming
+  - Real-Time
+  - Market Data
+  tags_raw:
   - Streaming
   - Real Time
   - Market Data
