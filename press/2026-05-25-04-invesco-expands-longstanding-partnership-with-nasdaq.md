@@ -1,7 +1,9 @@
 ---
 title: Invesco Expands Longstanding Partnership with Nasdaq ...
 url: https://www.prnewswire.com/news-releases/invesco-expands-longstanding-partnership-with-nasdaq-with-two-new-thematic-technology-etfs-301310370.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Nasdaq OMX Group" press release artificial intelligence'
 position: 4
 source: serpapi-google

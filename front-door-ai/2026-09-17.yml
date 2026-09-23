@@ -1,0 +1,23 @@
+# Front Door AI Index — nasdaq-omx-group — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: nasdaq-omx-group
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.nasdaq.com
+  final_host: null
+  ownership: unresolved
+  owner: null
+  shares_host_with:
+  - calypso-migration
+  - calypso-workstation
+  inherited_from: null
+  verdict: unmeasured
+  score: null
+  host_score: null
+  density: null
+  words: null
+  tiers: null
+  ambiguous: null
+  top_terms: null

@@ -1,7 +1,9 @@
 ---
 title: NASDAQ OMX Selects Cisco Technology for High ...
 url: https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2011/m07/nasdaq-omx-selects-cisco-technology-for-high-performance-options-trading-networks.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Nasdaq OMX Group" press release artificial intelligence'
 position: 3
 source: serpapi-google

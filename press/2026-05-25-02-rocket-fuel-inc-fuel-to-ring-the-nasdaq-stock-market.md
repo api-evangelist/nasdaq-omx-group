@@ -1,7 +1,9 @@
 ---
 title: Rocket Fuel Inc. [FUEL] to Ring the NASDAQ Stock Market ...
 url: https://ir.nasdaq.com/news-releases/news-release-details/rocket-fuel-inc-fuel-ring-nasdaq-stock-market-opening-bell
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Nasdaq OMX Group" press release artificial intelligence'
 position: 2
 source: serpapi-google

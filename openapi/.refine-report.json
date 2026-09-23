@@ -1,8 +1,7 @@
 {
   "provider": "nasdaq-omx-group",
   "sources": [
-    "nasdaq-omx-group-databases-api-openapi.yml",
-    "nasdaq-omx-group-datasets-api-openapi.yml"
+    "_ae-authored/nasdaq-omx-group-openapi.yml"
   ],
   "outputs": [
     "nasdaq-omx-group-databases-api-openapi.yml",
@@ -11,6 +10,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "nasdaq-omx-group-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "nasdaq-omx-group-databases-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nasdaq-omx-group-datasets-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
