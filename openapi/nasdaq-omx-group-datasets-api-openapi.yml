@@ -87,59 +87,6 @@ paths:
                 $ref: '#/components/schemas/Resource'
 components:
   parameters:
-    DatasetCode:
-      name: dataset_code
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Short code identifying the dataset within a database.
-    ColumnIndex:
-      name: column_index
-      in: query
-      required: false
-      schema:
-        type: integer
-      description: Request a single specified column (0 = date).
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-      description: Limit the number of returned rows.
-    StartDate:
-      name: start_date
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date
-      description: Inclusive lower bound for the date filter (yyyy-mm-dd).
-    Format:
-      name: format
-      in: path
-      required: true
-      schema:
-        type: string
-        enum:
-        - json
-        - xml
-        - csv
-      description: Response format.
-    Transform:
-      name: transform
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - diff
-        - rdiff
-        - rdiff_from
-        - cumul
-        - normalize
-      description: Transformation to apply to the data series.
     DatabaseCode:
       name: database_code
       in: path
@@ -147,14 +94,6 @@ components:
       schema:
         type: string
       description: Short code identifying the database (e.g. WIKI, FRED).
-    EndDate:
-      name: end_date
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date
-      description: Inclusive upper bound for the date filter (yyyy-mm-dd).
     Collapse:
       name: collapse
       in: query
@@ -168,6 +107,19 @@ components:
         - quarterly
         - annual
       description: Sampling frequency to collapse the time series to.
+    Transform:
+      name: transform
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - diff
+        - rdiff
+        - rdiff_from
+        - cumul
+        - normalize
+      description: Transformation to apply to the data series.
     Order:
       name: order
       in: query
@@ -178,6 +130,54 @@ components:
         - asc
         - desc
       description: Sort order of returned rows.
+    StartDate:
+      name: start_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date
+      description: Inclusive lower bound for the date filter (yyyy-mm-dd).
+    DatasetCode:
+      name: dataset_code
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Short code identifying the dataset within a database.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+      description: Limit the number of returned rows.
+    ColumnIndex:
+      name: column_index
+      in: query
+      required: false
+      schema:
+        type: integer
+      description: Request a single specified column (0 = date).
+    EndDate:
+      name: end_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date
+      description: Inclusive upper bound for the date filter (yyyy-mm-dd).
+    Format:
+      name: format
+      in: path
+      required: true
+      schema:
+        type: string
+        enum:
+        - json
+        - xml
+        - csv
+      description: Response format.
   schemas:
     Resource:
       type: object

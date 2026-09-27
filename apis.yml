@@ -37,7 +37,7 @@ created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.23'
 tags:
-  - Financial-Services
+  - Financial Services
   - Capital Markets
   - Stock Exchange
   - Market Data
@@ -50,6 +50,7 @@ tags_raw:
   - Market Data
   - Economics
   - Fortune 1000
+  - Financial-Services
 apis:
 - aid: nasdaq-omx-group:data-link-tables
   name: Nasdaq Data Link Tables API
