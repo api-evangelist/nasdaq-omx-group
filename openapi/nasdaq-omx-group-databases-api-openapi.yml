@@ -60,6 +60,13 @@ paths:
                 format: binary
 components:
   parameters:
+    DatabaseCode:
+      name: database_code
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Short code identifying the database (e.g. WIKI, FRED).
     Format:
       name: format
       in: path
@@ -71,13 +78,6 @@ components:
         - xml
         - csv
       description: Response format.
-    DatabaseCode:
-      name: database_code
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Short code identifying the database (e.g. WIKI, FRED).
   schemas:
     Resource:
       type: object
