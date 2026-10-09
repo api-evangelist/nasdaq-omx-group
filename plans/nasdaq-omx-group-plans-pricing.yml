@@ -177,3 +177,54 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - metered
+  - subscription
+  units:
+  - object
+  - request
+  plans:
+  - name: Anonymous (No API Key)
+    access: freemium
+    model: free
+    model_how: derived
+    units:
+    - request
+    periods:
+    - day
+    - minute
+  - name: Free (API Key)
+    access: freemium
+    model: free
+    model_how: derived
+    units:
+    - request
+    periods:
+    - day
+    - minute
+    - second
+  - name: Premium Data Subscription (a la carte)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    - other
+    - request
+    periods:
+    - day
+    - hour
+    - minute
+    - month
+  - name: Bulk Download API
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - request
+    periods:
+    - day
