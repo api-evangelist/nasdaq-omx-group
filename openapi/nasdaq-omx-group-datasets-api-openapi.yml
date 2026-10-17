@@ -86,20 +86,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/Resource'
 components:
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true
   parameters:
-    Transform:
-      name: transform
+    ColumnIndex:
+      name: column_index
       in: query
       required: false
       schema:
-        type: string
-        enum:
-        - diff
-        - rdiff
-        - rdiff_from
-        - cumul
-        - normalize
-      description: Transformation to apply to the data series.
+        type: integer
+      description: Request a single specified column (0 = date).
     Order:
       name: order
       in: query
@@ -118,6 +116,26 @@ components:
         type: string
         format: date
       description: Inclusive upper bound for the date filter (yyyy-mm-dd).
+    DatabaseCode:
+      name: database_code
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Short code identifying the database (e.g. WIKI, FRED).
+    Collapse:
+      name: collapse
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - daily
+        - weekly
+        - monthly
+        - quarterly
+        - annual
+      description: Sampling frequency to collapse the time series to.
     StartDate:
       name: start_date
       in: query
@@ -126,13 +144,6 @@ components:
         type: string
         format: date
       description: Inclusive lower bound for the date filter (yyyy-mm-dd).
-    DatabaseCode:
-      name: database_code
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Short code identifying the database (e.g. WIKI, FRED).
     Format:
       name: format
       in: path
@@ -151,26 +162,6 @@ components:
       schema:
         type: integer
       description: Limit the number of returned rows.
-    ColumnIndex:
-      name: column_index
-      in: query
-      required: false
-      schema:
-        type: integer
-      description: Request a single specified column (0 = date).
-    Collapse:
-      name: collapse
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - daily
-        - weekly
-        - monthly
-        - quarterly
-        - annual
-      description: Sampling frequency to collapse the time series to.
     DatasetCode:
       name: dataset_code
       in: path
@@ -178,10 +169,19 @@ components:
       schema:
         type: string
       description: Short code identifying the dataset within a database.
-  schemas:
-    Resource:
-      type: object
-      additionalProperties: true
+    Transform:
+      name: transform
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - diff
+        - rdiff
+        - rdiff_from
+        - cumul
+        - normalize
+      description: Transformation to apply to the data series.
   securitySchemes:
     apiKeyAuth:
       type: apiKey

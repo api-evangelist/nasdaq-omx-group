@@ -59,14 +59,11 @@ paths:
                 type: string
                 format: binary
 components:
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true
   parameters:
-    DatabaseCode:
-      name: database_code
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Short code identifying the database (e.g. WIKI, FRED).
     Format:
       name: format
       in: path
@@ -78,10 +75,13 @@ components:
         - xml
         - csv
       description: Response format.
-  schemas:
-    Resource:
-      type: object
-      additionalProperties: true
+    DatabaseCode:
+      name: database_code
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Short code identifying the database (e.g. WIKI, FRED).
   securitySchemes:
     apiKeyAuth:
       type: apiKey
